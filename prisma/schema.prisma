@@ -14,7 +14,7 @@ model Admin {
   id       String @id @default(uuid())
   username String @unique
   password String
-  nama     String
+  name     String
 }
 
 model Perusahaan {
