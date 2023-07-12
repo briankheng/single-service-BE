@@ -1,0 +1,38 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["jsonProtocol"]
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("POSTGRES_PRISMA_URL")
+  directUrl         = env("POSTGRES_URL_NON_POOLING")
+  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model Admin {
+  id       String @id @default(uuid())
+  username String @unique
+  password String
+  nama     String
+}
+
+model Perusahaan {
+  id      String   @id @default(uuid())
+  nama    String
+  alamat  String
+  no_telp String
+  kode    String
+  barang  Barang[]
+}
+
+model Barang {
+  id            String @id @default(uuid())
+  nama          String
+  harga         Int
+  stok          Int
+  kode          String
+  perusahaan_id String
+
+  perusahaan Perusahaan @relation(fields: [perusahaan_id], references: [id], onDelete: Cascade)
+}
