@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import NextCors from "nextjs-cors";
+import authorized from "@/libs/authorized";
 
 export default async function handler(
   req: NextApiRequest,
@@ -9,7 +10,7 @@ export default async function handler(
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
     origin: "*",
   });
-  
+
   if (req.method !== "GET")
     return res
       .status(405)
@@ -17,14 +18,14 @@ export default async function handler(
 
   const token = req.headers.authorization;
 
-  if (!token) {
+  if (!authorized(token)) {
     return res
       .status(401)
       .json({ status: "error", message: "Unauthorized", data: null });
   }
 
   const decoded = JSON.parse(
-    Buffer.from(token.split(".")[1], "base64").toString()
+    Buffer.from(token!.split(".")[1], "base64").toString()
   );
 
   return res.status(200).json({
