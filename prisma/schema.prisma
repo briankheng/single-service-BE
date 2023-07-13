@@ -31,7 +31,7 @@ model Barang {
   nama          String
   harga         Int
   stok          Int
-  kode          String
+  kode          String @unique
   perusahaan_id String
 
   perusahaan Perusahaan @relation(fields: [perusahaan_id], references: [id], onDelete: Cascade)
