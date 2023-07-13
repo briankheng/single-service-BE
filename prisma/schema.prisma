@@ -27,12 +27,11 @@ model Perusahaan {
 }
 
 model Barang {
-  id            String @id @default(uuid())
+  id            String     @id @default(uuid())
   nama          String
   harga         Int
   stok          Int
-  kode          String @unique
+  kode          String     @unique
   perusahaan_id String
-
-  perusahaan Perusahaan @relation(fields: [perusahaan_id], references: [id], onDelete: Cascade)
+  perusahaan    Perusahaan @relation(fields: [perusahaan_id], references: [id], onDelete: Cascade)
 }

@@ -30,9 +30,7 @@ export default async function handler(
       if (perusahaan) {
         const perusahaanBarang = await prisma.barang.findMany({
           where: {
-            perusahaan: {
-              nama: perusahaan,
-            },
+            perusahaan_id: perusahaan,
           },
         });
 
