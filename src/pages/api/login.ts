@@ -2,16 +2,15 @@ import { NextApiRequest, NextApiResponse } from "next";
 import NextCors from "nextjs-cors";
 import prisma from "@/libs/prisma";
 import { sign } from "jsonwebtoken";
-import { serialize } from "cookie";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   await NextCors(req, res, {
-    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-    origin: '*',
- });
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    origin: "*",
+  });
 
   if (req.method !== "POST")
     return res
@@ -34,12 +33,12 @@ export default async function handler(
 
   const token = sign(
     {
-      exp: 365 * 24 * 60 * 60,
       id: admin.id,
       username: admin.username,
       name: admin.name,
     },
-    process.env.JWT_SECRET as string
+    process.env.JWT_SECRET as string,
+    { expiresIn: "365d" }
   );
 
   return res.status(200).json({
