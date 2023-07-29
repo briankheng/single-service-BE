@@ -21,9 +21,12 @@ Atau, jika ingin menjalankan di lokal (http://localhost:3000/):
 - Password: admin
 
 ## Design Pattern
-- Singleton Pattern
-- Repository Pattern
-- MVC Pattern
+- Singleton Pattern <br>
+  Hanya terdapat satu instance prisma client yang digunakan untuk melakukan interaksi ke database melalui prisma ORM.
+- Chain of Responsibility <br>
+  Dilakukan autentikasi terlebih dahulu untuk dapat melakukan UPDATE atau DELETE terhadap barang/ perusahaan.
+- MVC Pattern <br>
+  Dilakukan pemisahan arsitektur yang jelas, yakni model-view-controller.
 
 ## Technology Stack
 - TypeScript 5.1.6
