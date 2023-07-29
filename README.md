@@ -16,6 +16,9 @@ Atau, jika ingin menjalankan di lokal (http://localhost:3000/):
 3. ```sh
     npm run dev
    ```
+### Credential:
+- Username: admin
+- Password: admin
 
 ## Design Pattern
 - Singleton Pattern
@@ -26,7 +29,7 @@ Atau, jika ingin menjalankan di lokal (http://localhost:3000/):
 - TypeScript 5.1.6
 - Next.js 13.4
 - PostgreSQL 15.2
-- Prisma 5.0.0
+- Prisma ORM 5.0.0
 
 ## Endpoint
 - GET /self
